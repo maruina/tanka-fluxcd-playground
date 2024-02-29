@@ -17,15 +17,16 @@ local tf = import 'tf.jsonnet';
       namespace: 'default',
     },
     data: {
-      // This is the place where we define which charts are part of a production EKS cluster
+      // This is the place where we define which charts makes a production EKS cluster
       eks: {
         karpenter: ekslib.newKarpenter(cluster.name, cluster.karpenter_role_arn),
-        aws_load_balancer_controller: ekslib.newAwsLoadBalancerController(cluster.name),
+        aws_load_balancer_controller: ekslib.newAwsLoadBalancerController(cluster.name, cluster.aws_load_balancer_controller_role_arn),
       },
     },
   },
 
   // Using inline environments
+  // See https://tanka.dev/inline-environments
   clusters:: [
     { name: 'green' },
     { name: 'blue' },

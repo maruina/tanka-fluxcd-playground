@@ -31,11 +31,16 @@ local helm = tanka.helm.new(std.thisFile);
       },
     }),
   },
-  newAwsLoadBalancerController(cluster):: {
+  newAwsLoadBalancerController(cluster, serviceAccountRoleArn):: {
     aws_load_balancer_controller: helm.template('aws-load-balancer-controller', './charts/aws-load-balancer-controller', {
       namespace: 'kube-system',
       values: {
         clusterName: cluster,
+        serviceAccount: {
+          annotations: {
+            'eks.amazonaws.com/role-arn': serviceAccountRoleArn,
+          },
+        },
         tolerations: [{
           key: 'CriticalAddonsOnly',
           operator: 'Exists',
