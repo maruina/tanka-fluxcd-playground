@@ -1,10 +1,10 @@
-local eksimport = import 'eks/main.libsonnet';
-
-
+local ekslib = import 'eks/main.libsonnet';
 local cluster = 'green';
-eksimport.eks(cluster)
 
 // local raw = import '../raw/cluster
 {
-  clusters: {},
+  eks: {
+    karpenter: ekslib.newKarpenter(cluster),
+    aws_load_balancer_controller: ekslib.newAwsLoadBalancerController(cluster),
+  },
 }
