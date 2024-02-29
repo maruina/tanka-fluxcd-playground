@@ -41,6 +41,7 @@ spec:
       - args:
         - --cluster-name=blue
         - --ingress-class=alb
+        - --service-target-eni-security-group-tags=Name=blue-node
         image: public.ecr.aws/eks/aws-load-balancer-controller:v2.7.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
@@ -82,6 +83,10 @@ spec:
         fsGroup: 65534
       serviceAccountName: aws-load-balancer-controller
       terminationGracePeriodSeconds: 10
+      tolerations:
+      - effect: NoSchedule
+        key: CriticalAddonsOnly
+        operator: Exists
       volumes:
       - name: cert
         secret:

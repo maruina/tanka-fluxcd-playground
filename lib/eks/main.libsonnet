@@ -9,6 +9,18 @@ local helm = tanka.helm.new(std.thisFile);
         settings: {
           clusterName: cluster,
         },
+        controller: {
+          resources: {
+            requests: {
+              cpu: '1',
+              memory: '1Gi',
+            },
+            limits: {
+              cpu: '1',
+              memory: '1Gi',
+            },
+          },
+        },
       },
     }),
   },
@@ -17,6 +29,12 @@ local helm = tanka.helm.new(std.thisFile);
       namespace: 'kube-system',
       values: {
         clusterName: cluster,
+        tolerations: [{
+          key: 'CriticalAddonsOnly',
+          operator: 'Exists',
+          effect: 'NoSchedule',
+        }],
+        serviceTargetENISGTags: 'Name=%s-node' % cluster,
       },
     }),
   },
