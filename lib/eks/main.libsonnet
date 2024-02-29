@@ -1,13 +1,20 @@
 local tanka = import 'github.com/grafana/jsonnet-libs/tanka-util/main.libsonnet';
 local helm = tanka.helm.new(std.thisFile);
 
+// Creating a function per chart so we can use in our environment
+// and pass the variables we need when calling helm template
 {
-  newKarpenter(cluster):: {
+  newKarpenter(cluster, serviceAccountRoleArn):: {
     karpenter: helm.template('karpenter', './charts/karpenter', {
       namespace: 'kube-system',
       values: {
         settings: {
           clusterName: cluster,
+        },
+        serviceAccount: {
+          annotations: {
+            'eks.amazonaws.com/role-arn': serviceAccountRoleArn,
+          },
         },
         controller: {
           resources: {
