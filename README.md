@@ -11,6 +11,9 @@ brew install tanka jsonnet-bundler
 ```shell
 tk tool charts add-repo karpenter oci://public.ecr.aws/karpenter
 tk tool charts add karpenter/karpenter@v0.34.0
+
+tk tool charts add-repo eks https://aws.github.io/eks-charts
+tk tool charts add eks/aws-load-balancer-controller@v1.7.1
 ```
 
 ### Generate the environment

@@ -20,7 +20,9 @@ local tf = import 'tf.jsonnet';
       // This is the place where we define which charts makes a production EKS cluster
       eks: {
         karpenter: ekslib.newKarpenter(cluster.name, cluster.karpenter_role_arn),
-        aws_load_balancer_controller: ekslib.newAwsLoadBalancerController(cluster.name, cluster.aws_load_balancer_controller_role_arn),
+        nodePool: ekslib.newKarpenterNodePoll('default', 'kube-system'),
+        nodeClass: ekslib.newKarpenterNodeClass('default', 'kube-system', cluster.karpenter_node_role, cluster.name),
+        awsLoadBalancerController: ekslib.newAwsLoadBalancerController(cluster.name, cluster.aws_load_balancer_controller_role_arn),
       },
     },
   },

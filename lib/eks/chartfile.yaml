@@ -6,6 +6,8 @@ repositories:
   url: oci://public.ecr.aws/karpenter
 - name: eks
   url: https://aws.github.io/eks-charts
+- name: podinfo
+  url: https://stefanprodan.github.io/podinfo
 requires:
 - chart: karpenter/karpenter
   version: v0.34.0
