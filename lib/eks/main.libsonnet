@@ -123,4 +123,14 @@ local helm = tanka.helm.new(std.thisFile);
       },
     }),
   },
+  newPodInfo(message):: {
+    podinfo: helm.template('podinfo', './charts/podinfo', {
+      namespace: 'default',
+      values: {
+        ui: {
+          message: message,
+        },
+      },
+    }),
+  },
 }

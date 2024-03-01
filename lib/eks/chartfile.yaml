@@ -13,4 +13,6 @@ requires:
   version: v0.34.0
 - chart: eks/aws-load-balancer-controller
   version: v1.7.1
+- chart: podinfo/podinfo
+  version: v6.6.0
 version: 1
