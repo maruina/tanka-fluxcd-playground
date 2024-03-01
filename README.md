@@ -30,6 +30,10 @@ To provision a local cluster with kind and automatically installed all the desir
 kind create cluster
 export GITHUB_TOKEN=<gh-token>
 flux bootstrap github --token-auth --owner=maruina --repository=tanka-fluxcd-playground --branch=main --path=manifests/test/kind --personal
+# Test if podinfo is running
+kubectl port-forward service/podinfo 9898:9898
+# On another shell
+curl localhost:9898
 ```
 
 ## Issues
