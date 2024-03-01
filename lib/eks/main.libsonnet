@@ -134,4 +134,21 @@ local helm = tanka.helm.new(std.thisFile);
       },
     }),
   },
+  newNamespace(name):: {
+    apiVersion: 'v1',
+    kind: 'Namespace',
+    metadata: {
+      name: name,
+    },
+  },
+  newCertManager(namespace):: {
+    cert_manager: helm.template('cert-manager', './charts/cert-manager', {
+      namespace: namespace,
+      values: {
+        prometheus: {
+          enabled: false,
+        },
+      },
+    }),
+  },
 }

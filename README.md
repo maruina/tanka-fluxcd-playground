@@ -24,6 +24,8 @@ tk export manifests environments/prod --format='{{env.metadata.labels.env}}//{{e
 
 ## Test with `kind`
 
+To provision a local cluster with kind and automatically installed all the desired charts:
+
 ```shell
 kind create cluster
 export GITHUB_TOKEN=<gh-token>

@@ -18,6 +18,8 @@ local ekslib = import 'eks/main.libsonnet';
       // This is the place where we define which charts makes a production EKS cluster
       cluster: {
         podinfo: ekslib.newPodInfo(cluster.podinfoMessage),
+        cert_manager_namespace: ekslib.newNamespace('cert-manager'),
+        cert_manager: ekslib.newCertManager('cert-manager'),
       },
     },
   },

@@ -8,6 +8,8 @@ repositories:
   url: https://aws.github.io/eks-charts
 - name: podinfo
   url: https://stefanprodan.github.io/podinfo
+- name: jetstack
+  url: https://charts.jetstack.io
 requires:
 - chart: karpenter/karpenter
   version: v0.34.0
@@ -15,4 +17,6 @@ requires:
   version: v1.7.1
 - chart: podinfo/podinfo
   version: v6.6.0
+- chart: jetstack/cert-manager
+  version: v1.14.3
 version: 1
