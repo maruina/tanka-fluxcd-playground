@@ -22,6 +22,14 @@ tk tool charts add eks/aws-load-balancer-controller@v1.7.1
 tk export manifests environments/prod --format='{{env.metadata.labels.env}}//{{env.metadata.name}}//{{.metadata.name}}-{{.kind | lower}}' --merge-strategy=replace-envs --recursive
 ```
 
+## Test with `kind`
+
+```shell
+kind create cluster
+export GITHUB_TOKEN=<gh-token>
+flux bootstrap github --token-auth --owner=maruina --repository=tanka-fluxcd-playground --branch=main --path=manifests/test/kind --personal
+```
+
 ## Issues
 
 Charts like AWS Load Balancer controller use helm functions `genCA` which generates a new CA every time we call `helm template`. See https://github.com/helm/helm/issues/10731

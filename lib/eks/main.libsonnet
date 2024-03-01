@@ -126,6 +126,7 @@ local helm = tanka.helm.new(std.thisFile);
   newPodInfo(message):: {
     podinfo: helm.template('podinfo', './charts/podinfo', {
       namespace: 'default',
+      noHooks: true,
       values: {
         ui: {
           message: message,

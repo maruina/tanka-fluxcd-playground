@@ -68,8 +68,5 @@
     "prod//green//nodepools.karpenter.sh-customresourcedefinition.yaml": "environments/prod/main.jsonnet",
     "prod//green//targetgroupbindings.elbv2.k8s.aws-customresourcedefinition.yaml": "environments/prod/main.jsonnet",
     "test//kind//podinfo-deployment.yaml": "environments/test/main.jsonnet",
-    "test//kind//podinfo-grpc-test-0oklc-pod.yaml": "environments/test/main.jsonnet",
-    "test//kind//podinfo-jwt-test-azgz2-pod.yaml": "environments/test/main.jsonnet",
-    "test//kind//podinfo-service-test-exah8-pod.yaml": "environments/test/main.jsonnet",
     "test//kind//podinfo-service.yaml": "environments/test/main.jsonnet"
 }
