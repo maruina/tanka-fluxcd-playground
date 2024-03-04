@@ -1,0 +1,17 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    app.kubernetes.io/instance: karpenter
+    app.kubernetes.io/managed-by: Helmraiser
+    app.kubernetes.io/name: karpenter
+    app.kubernetes.io/version: 0.34.0
+    helm.sh/chart: karpenter-v0.34.0
+  name: karpenter
+  namespace: kube-system
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: karpenter
+      app.kubernetes.io/name: karpenter

@@ -28,7 +28,7 @@ local ekslib = import 'eks/main.libsonnet';
   // Using inline environments
   // See https://tanka.dev/inline-environments
   clusters:: [
-    { name: 'kind', podinfoMessage: 'hello from Alberto' },
+    { name: 'kind', podinfoMessage: 'hello from Peter' },
   ],
 
   envs: {
