@@ -34,6 +34,26 @@ flux bootstrap github --token-auth --owner=maruina --repository=tanka-fluxcd-pla
 kubectl port-forward service/podinfo 9898:9898
 # On another shell
 curl localhost:9898
+# Make sure all charts are deployed
+kubectl get pods --all-namespaces
+NAMESPACE            NAME                                         READY   STATUS    RESTARTS      AGE
+cert-manager         cert-manager-6854c975d5-jp8nv                1/1     Running   0             6m32s
+cert-manager         cert-manager-cainjector-6976895488-fgfdt     1/1     Running   1 (88s ago)   6m32s
+cert-manager         cert-manager-webhook-fcf48cc54-fhlqm         1/1     Running   0             6m32s
+default              podinfo-8d9cddc85-4kqtx                      1/1     Running   0             25m
+flux-system          helm-controller-5d8d5fc6fd-qlzhb             1/1     Running   0             25m
+flux-system          kustomize-controller-7b7b47f459-z78bv        1/1     Running   0             25m
+flux-system          notification-controller-5bb6647999-2wlx2     1/1     Running   0             25m
+flux-system          source-controller-7667765cd7-n9rrf           1/1     Running   0             25m
+kube-system          coredns-76f75df574-54kzc                     1/1     Running   0             28m
+kube-system          coredns-76f75df574-m7n58                     1/1     Running   0             28m
+kube-system          etcd-kind-control-plane                      1/1     Running   0             28m
+kube-system          kindnet-5sg2d                                1/1     Running   0             28m
+kube-system          kube-apiserver-kind-control-plane            1/1     Running   0             28m
+kube-system          kube-controller-manager-kind-control-plane   1/1     Running   0             28m
+kube-system          kube-proxy-thgmz                             1/1     Running   0             28m
+kube-system          kube-scheduler-kind-control-plane            1/1     Running   0             28m
+local-path-storage   local-path-provisioner-7577fdbbfb-76d65      1/1     Running   0             28m
 ```
 
 ## Issues

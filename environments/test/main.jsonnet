@@ -2,6 +2,7 @@
 local ekslib = import 'eks/main.libsonnet';
 
 {
+  local cert_manager_namespace = 'cert-manager',
   environment(cluster):: {
     apiVersion: 'tanka.dev/v1alpha1',
     kind: 'Environment',
@@ -18,8 +19,8 @@ local ekslib = import 'eks/main.libsonnet';
       // This is the place where we define which charts makes a production EKS cluster
       cluster: {
         podinfo: ekslib.newPodInfo(cluster.podinfoMessage),
-        cert_manager_namespace: ekslib.newNamespace('cert-manager'),
-        cert_manager: ekslib.newCertManager('cert-manager'),
+        cert_manager_namespace: ekslib.newNamespace(cert_manager_namespace),
+        cert_manager: ekslib.newCertManager(cert_manager_namespace),
       },
     },
   },
@@ -27,7 +28,7 @@ local ekslib = import 'eks/main.libsonnet';
   // Using inline environments
   // See https://tanka.dev/inline-environments
   clusters:: [
-    { name: 'kind', podinfoMessage: 'hello from kind and fluxcd' },
+    { name: 'kind', podinfoMessage: 'hello from Alberto' },
   ],
 
   envs: {
