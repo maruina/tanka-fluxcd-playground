@@ -38,7 +38,7 @@ spec:
         - --random-error=false
         env:
         - name: PODINFO_UI_MESSAGE
-          value: hello from Peter
+          value: hello from standup
         - name: PODINFO_UI_COLOR
           value: '#34577c'
         image: ghcr.io/stefanprodan/podinfo:6.6.0
